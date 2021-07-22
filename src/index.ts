@@ -12,10 +12,10 @@ export default class PrintService {
 	}
 
 	/**
-	 * Add a header to the reciept
+	 * Add a header to the receipt
 	 *
-	 * @param header
-	 * @param center
+	 * @param header - the header as a string
+	 * @param center - defaults to false, if true, the header will be centrally aligned
 	 */
 	addHeader(header: string, center: boolean = false): PrintService {
 		if (center) {
@@ -26,6 +26,10 @@ export default class PrintService {
 		return this;
 	}
 
+	/**
+	 * Adds text to the receipt
+	 * @param text
+	 */
 	addText(text: string): PrintService {
 		this.data.push('<p>' + text + '</p>');
 		return this;
@@ -74,8 +78,6 @@ export default class PrintService {
 					} else {
 						console.error('There was an error printing', failureReason);
 					}
-
-					console.log('Print Initiated');
 				});
 
 			});
